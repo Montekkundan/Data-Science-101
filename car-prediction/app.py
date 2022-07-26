@@ -64,17 +64,12 @@ def predict():
 
     transmission = int(request.form.get("transmission"))
     data[20] = transmission
-    # v = [int(x) for x in request.form.values()]
-    # int_features = [2015, 41000, 1, 5.0, 19.67, 1582.0,
-    #                 126.20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1]
     final_features = [np.array(data)]
-    # v_f = [np.array(v)]
     prediction = model.predict(final_features)
 
     output = round(prediction[0], 2)
 
     return render_template('index.html', prediction_text=' You can sell the car for {} lakhs'.format(output))
-    # return render_template('index.html', prediction_text=data)
 
 
 if __name__ == "__main__":
